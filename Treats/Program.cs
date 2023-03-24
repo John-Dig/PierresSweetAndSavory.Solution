@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using Template.Models;
+using Treats.Models;
 
-namespace Template
+namespace Treats
 {
   class Program
   {
@@ -14,7 +14,7 @@ namespace Template
 
       builder.Services.AddControllersWithViews();
 
-      builder.Services.AddDbContext<TemplateContext>(
+      builder.Services.AddDbContext<TreatsContext>(
                         dbContextOptions => dbContextOptions
                           .UseMySql(
                             builder.Configuration["ConnectionStrings:DefaultConnection"], ServerVersion.AutoDetect(builder.Configuration["ConnectionStrings:DefaultConnection"]
