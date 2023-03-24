@@ -1,9 +1,9 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using Treats.Models;
-
-namespace Treats
+using PSAS.Models;
+using Microsoft.AspNetCore.Identity;
+namespace PSAS
 {
   class Program
   {
@@ -14,13 +14,26 @@ namespace Treats
 
       builder.Services.AddControllersWithViews();
 
-      builder.Services.AddDbContext<TreatsContext>(
+      builder.Services.AddDbContext<PSASContext>(
                         dbContextOptions => dbContextOptions
                           .UseMySql(
                             builder.Configuration["ConnectionStrings:DefaultConnection"], ServerVersion.AutoDetect(builder.Configuration["ConnectionStrings:DefaultConnection"]
                           )
                         )
                       );
+      builder.Services.AddIdentity<ApplicationUser, IdentityRole>()//added for identity
+                .AddEntityFrameworkStores<PSASContext>()//added for identity
+                .AddDefaultTokenProviders();//added for identity
+
+      builder.Services.Configure<IdentityOptions>(options =>
+      {
+        options.Password.RequireDigit = false;
+        options.Password.RequireLowercase = false;
+        options.Password.RequireNonAlphanumeric = false;
+        options.Password.RequireUppercase = false;
+        options.Password.RequiredLength = 3;
+        options.Password.RequiredUniqueChars = 0;
+      });
 
       WebApplication app = builder.Build();
 
@@ -29,6 +42,9 @@ namespace Treats
       app.UseStaticFiles();
 
       app.UseRouting();
+
+      app.UseAuthentication(); //added for identity
+      app.UseAuthorization(); //added for identity
 
       app.MapControllerRoute(
           name: "default",
