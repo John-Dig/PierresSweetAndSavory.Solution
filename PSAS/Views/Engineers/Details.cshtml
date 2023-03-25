@@ -1,0 +1,34 @@
+@{
+  Layout = "_Layout";
+}
+
+@using PSAS.Models
+@model PSAS.Models.Treat //so we can use Html helper methods x2
+
+<h2>Treat Details</h2>
+<hr />
+<h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h3>
+
+@if (@Model.JoinEntities.Count == 0)
+{
+  <p>This treat has no flavors to fix!</p>
+}
+else
+{
+  <h4>This treat can fix the following flavors:</h4>
+  <ul>
+  @foreach (EnMa join in Model.JoinEntities)
+    {
+      <li>@join.Flavor.Name</li>
+      @using (Html.BeginForm("DeleteJoin", "Treats"))
+      {
+        @Html.Hidden("joinId", @join.EnMaId)
+        <input type="submit" value="Click here if @join.Treat.Name should no longer be allowed to fix @join.Flavor.Name"/>
+      }
+    }
+  </ul>
+}
+<p>@Html.ActionLink("Add a flavor this treat can fix", "AddFlavor", new { id = Model.TreatId })</p>
+<p>@Html.ActionLink("Edit treat", "Edit", new { id = Model.TreatId })</p>
+<p>@Html.ActionLink("Delete treat", "Delete", new { id = Model.TreatId })</p>
+<p>@Html.ActionLink("Back to the treats list", "Index")</p>
