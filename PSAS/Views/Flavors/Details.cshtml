@@ -11,19 +11,19 @@
 
 @if(@Model.JoinEntities.Count == 0)
 {
-  <p>This flavor has no treats assigned to repair it.</p>
+  <p>This flavor hasn't been added to any treats.</p>
 }
 else
 {
-  <h4>Treats this flavor can be repaired by:</h4>
+  <h4>Treats this flavor is associated with:</h4>
   <ul>
-  @foreach(EnMa join in Model.JoinEntities)  //join represents a single EnMa entity
+  @foreach(TreatFlavor join in Model.JoinEntities)  //join represents a single TreatFlavor entity
   {
     <li>@join.Treat.Name</li>
     @using (Html.BeginForm("DeleteJoin", "Flavors"))
 {
-  @Html.Hidden("joinId", @join.EnMaId)
-  <input type="submit" value="Click here if @join.Treat.Name should no longer be authorized to fix @join.Flavor.Name"/>
+  @Html.Hidden("joinId", @join.TreatFlavorId)
+  <input type="submit" value="Click here if @join.Treat.Name should no longer be associated with @join.Flavor.Name"/>
 }
   }
   </ul>
