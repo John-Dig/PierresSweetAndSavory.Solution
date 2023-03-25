@@ -7,7 +7,7 @@ namespace PSAS.Models
   {
     public DbSet<Treat> Treats { get; set; }
     public DbSet<Flavor> Flavors { get; set; }
-
+    public DbSet<FlavorTreat> FlavorTreats { get; set; }
     public PSASContext(DbContextOptions options) : base(options) { }
   }
 
