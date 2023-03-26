@@ -6,7 +6,8 @@ namespace PSAS.Models
   {
     public int FlavorId { get; set; }
     public string Name { get; set; }
-    public List<Treat> Treats { get; set; }
+    public List<Treat> Treats { get; set; } //probably remove
     public List<FlavorTreat> JoinEntities { get; }
+    public ApplicationUser User { get; set; }
   }
 }

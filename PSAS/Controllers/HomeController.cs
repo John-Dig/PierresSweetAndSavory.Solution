@@ -31,10 +31,10 @@ namespace PSAS.Controllers
       //   ApplicationUser currentUser = await _userManager.FindByIdAsync(userId);
       //   if (currentUser != null)
       //   {
-      //   Item[] items = _db.Items
+      //   Treat[] treats = _db.Treats
       //               .Where(entry => entry.User.Id == currentUser.Id)
       //               .ToArray();
-      //   model.Add("items", items);
+      //   model.Add("treats", treats);
       //   }
       //   return View(model);
       // }

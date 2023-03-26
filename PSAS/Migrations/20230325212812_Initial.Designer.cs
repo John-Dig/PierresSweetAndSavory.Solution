@@ -11,7 +11,7 @@ using PSAS.Models;
 namespace Treats.Migrations
 {
     [DbContext(typeof(PSASContext))]
-    [Migration("20230325060548_Initial")]
+    [Migration("20230325212812_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -243,20 +243,6 @@ namespace Treats.Migrations
                     b.ToTable("Flavors");
                 });
 
-            modelBuilder.Entity("PSAS.Models.Treat", b =>
-                {
-                    b.Property<int>("TreatId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("longtext");
-
-                    b.HasKey("TreatId");
-
-                    b.ToTable("Treats");
-                });
-
             modelBuilder.Entity("PSAS.Models.FlavorTreat", b =>
                 {
                     b.Property<int>("FlavorTreatId")
@@ -276,6 +262,20 @@ namespace Treats.Migrations
                     b.HasIndex("TreatId");
 
                     b.ToTable("FlavorTreats");
+                });
+
+            modelBuilder.Entity("PSAS.Models.Treat", b =>
+                {
+                    b.Property<int>("TreatId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("longtext");
+
+                    b.HasKey("TreatId");
+
+                    b.ToTable("Treats");
                 });
 
             modelBuilder.Entity("FlavorTreat", b =>

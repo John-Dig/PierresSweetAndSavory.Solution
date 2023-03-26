@@ -4,16 +4,10 @@
 
 @model PSAS.Models.Flavor
 
-<h2>Add an treat</h2>
+<h2>Add a treat</h2>
 
-
-@if (ViewBag.TreatsAreNotHired)
 {
-  <h4>You havn't added any treats</h4>
-}
-else
-{
-  <h4>Add an treat to this flavor: @Html.DisplayFor(model => model.Name)</h4>
+  <h4>Add a treat to this flavor: @Html.DisplayFor(model => model.Name)</h4>
 
   @using (Html.BeginForm())
   {

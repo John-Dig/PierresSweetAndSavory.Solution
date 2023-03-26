@@ -17,12 +17,12 @@ else
 {
   <h4>Treats this flavor is associated with:</h4>
   <ul>
-  @foreach(TreatFlavor join in Model.JoinEntities)  //join represents a single TreatFlavor entity
+  @foreach(FlavorTreat join in Model.JoinEntities)  //join represents a single FlavorTreat entity
   {
     <li>@join.Treat.Name</li>
     @using (Html.BeginForm("DeleteJoin", "Flavors"))
 {
-  @Html.Hidden("joinId", @join.TreatFlavorId)
+  @Html.Hidden("joinId", @join.FlavorTreatId)
   <input type="submit" value="Click here if @join.Treat.Name should no longer be associated with @join.Flavor.Name"/>
 }
   }
