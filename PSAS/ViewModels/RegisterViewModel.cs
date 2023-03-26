@@ -11,7 +11,7 @@ namespace PSAS.ViewModels
 
     [Required]
     [DataType(DataType.Password)]
-    [RegularExpression("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{6,}$", ErrorMessage = "Your password must contain 3 characters.")]
+    [RegularExpression(".{3}$", ErrorMessage = "Your password must contain at least 3 characters.")]
     public string Password { get; set; }
 
     [Required]

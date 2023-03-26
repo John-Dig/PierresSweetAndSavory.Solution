@@ -46,7 +46,7 @@ namespace PSAS.Controllers
     public ActionResult AddTreat(int id)
     {
       Flavor thisFlavor = _db.Flavors.FirstOrDefault(flavors => flavors.FlavorId == id);
-      ViewBag.TreatId = new SelectList(_db.Treats, "TreatId", "Description");
+      ViewBag.TreatId = new SelectList(_db.Treats, "TreatId", "Name");
       return View(thisFlavor);
     }
 
@@ -54,11 +54,11 @@ namespace PSAS.Controllers
     public ActionResult AddTreat(Flavor flavor, int treatId)
     {
       #nullable enable
-      TreatFlavor? joinEntity = _db.TreatFlavors.FirstOrDefault(join => (join.TreatId == treatId && join.FlavorId == flavor.FlavorId));
+      FlavorTreat? joinEntity = _db.FlavorTreats.FirstOrDefault(join => (join.TreatId == treatId && join.FlavorId == flavor.FlavorId));
       #nullable disable
       if (joinEntity == null && treatId != 0)
       {
-        _db.TreatFlavors.Add(new TreatFlavor() { TreatId = treatId, FlavorId = flavor.FlavorId });
+        _db.FlavorTreats.Add(new FlavorTreat() { TreatId = treatId, FlavorId = flavor.FlavorId });
         _db.SaveChanges();
       }
       return RedirectToAction("Details", new { id = flavor.FlavorId });
@@ -96,8 +96,8 @@ namespace PSAS.Controllers
     [HttpPost]
     public ActionResult DeleteJoin(int joinId)
     {
-      TreatFlavor joinEntry = _db.TreatFlavors.FirstOrDefault(entry => entry.TreatFlavorId == joinId);
-      _db.TreatFlavors.Remove(joinEntry);
+      FlavorTreat joinEntry = _db.FlavorTreats.FirstOrDefault(entry => entry.FlavorTreatId == joinId);
+      _db.FlavorTreats.Remove(joinEntry);
       _db.SaveChanges();
       return RedirectToAction("Index");
     }

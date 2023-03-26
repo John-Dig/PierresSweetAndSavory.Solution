@@ -11,7 +11,7 @@ using PSAS.Models;
 namespace Treats.Migrations
 {
     [DbContext(typeof(PSASContext))]
-    [Migration("20230325212812_Initial")]
+    [Migration("20230326053008_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -238,7 +238,12 @@ namespace Treats.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("longtext");
 
+                    b.Property<string>("UserId")
+                        .HasColumnType("varchar(255)");
+
                     b.HasKey("FlavorId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Flavors");
                 });
@@ -273,7 +278,12 @@ namespace Treats.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("longtext");
 
+                    b.Property<string>("UserId")
+                        .HasColumnType("varchar(255)");
+
                     b.HasKey("TreatId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Treats");
                 });
@@ -344,6 +354,15 @@ namespace Treats.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("PSAS.Models.Flavor", b =>
+                {
+                    b.HasOne("PSAS.Models.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("User");
+                });
+
             modelBuilder.Entity("PSAS.Models.FlavorTreat", b =>
                 {
                     b.HasOne("PSAS.Models.Flavor", "Flavor")
@@ -361,6 +380,15 @@ namespace Treats.Migrations
                     b.Navigation("Flavor");
 
                     b.Navigation("Treat");
+                });
+
+            modelBuilder.Entity("PSAS.Models.Treat", b =>
+                {
+                    b.HasOne("PSAS.Models.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("PSAS.Models.Flavor", b =>

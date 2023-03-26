@@ -35,33 +35,25 @@ namespace PSAS.Controllers
 
     public ActionResult Create()
     {
-      ViewBag.CategoryId = new SelectList(_db.Categories, "CategoryId", "Name");
       return View();
     }
 
     [HttpPost]
-    public async Task<ActionResult> Create(Treat treat, int CategoryId)
+    public async Task<ActionResult> Create(Treat treat)
     {
-      if (!ModelState.IsValid)
-      {
-        ViewBag.CategoryId = new SelectList(_db.Categories, "CategoryId", "Name");
-        return View(treat);
-      }
-      else
-      {
-        string userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-        ApplicationUser currentUser = await _userManager.FindByIdAsync(userId);
-        treat.User = currentUser;
-        _db.Treats.Add(treat);
-        _db.SaveChanges();
-        return RedirectToAction("Index");
-      }
+      
+      string userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+      ApplicationUser currentUser = await _userManager.FindByIdAsync(userId);
+      treat.User = currentUser;
+      _db.Treats.Add(treat);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
     }
+    
 
     public ActionResult Details(int id)
     {
       Treat thisTreat = _db.Treats
-          .Include(treat => treat.Category)
           .Include(treat => treat.JoinEntities)
           .ThenInclude(join => join.Flavor)
           .FirstOrDefault(treat => treat.TreatId == id);
@@ -71,7 +63,6 @@ namespace PSAS.Controllers
     public ActionResult Edit(int id)
     {
       Treat thisTreat = _db.Treats.FirstOrDefault(treat => treat.TreatId == id);
-      ViewBag.CategoryId = new SelectList(_db.Categories, "CategoryId", "Name");
       return View(thisTreat);
     }
 
@@ -109,11 +100,11 @@ namespace PSAS.Controllers
     public ActionResult AddFlavor(Treat treat, int flavorId)
     {
       #nullable enable
-      TreatFlavor? joinEntity = _db.TreatFlavors.FirstOrDefault(join => (join.FlavorId == flavorId && join.TreatId == treat.TreatId));
+      FlavorTreat? joinEntity = _db.FlavorTreats.FirstOrDefault(join => (join.FlavorId == flavorId && join.TreatId == treat.TreatId));
       #nullable disable
       if (joinEntity == null && flavorId != 0)
       {
-        _db.TreatFlavors.Add(new TreatFlavor() { FlavorId = flavorId, TreatId = treat.TreatId });
+        _db.FlavorTreats.Add(new FlavorTreat() { FlavorId = flavorId, TreatId = treat.TreatId });
         _db.SaveChanges();
       }
       return RedirectToAction("Details", new { id = treat.TreatId });
@@ -122,8 +113,8 @@ namespace PSAS.Controllers
     [HttpPost]
     public ActionResult DeleteJoin(int joinId)
     {
-      TreatFlavor joinEntry = _db.TreatFlavors.FirstOrDefault(entry => entry.TreatFlavorId == joinId);
-      _db.TreatFlavors.Remove(joinEntry);
+      FlavorTreat joinEntry = _db.FlavorTreats.FirstOrDefault(entry => entry.FlavorTreatId == joinId);
+      _db.FlavorTreats.Remove(joinEntry);
       _db.SaveChanges();
       return RedirectToAction("Index");
     } 
