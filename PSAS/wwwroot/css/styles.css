@@ -1,6 +1,6 @@
 html {
-  background-color: #1C2331;
-  color: #EAECEE;
+  background-color: #FFDAB9;
+  color: #483D8B;
   font-family: 'Comic Sans MS', 'Chalkboard SE', 'Marker Felt', sans-serif;
   font-size: 1rem;
   background-image: url('/img/France.jpg');
@@ -9,32 +9,32 @@ html {
 }
 
 h1 {
-  color: #28B463;
-  border-bottom: 2px solid #28B463;
+  color: #FF69B4;
+  border-bottom: 2px solid #FF69B4;
 }
 
 h2 {
-  color: #85C1E9;
+  color: #00BFFF;
 }
 
 h3 {
-  color: #5499C7;
+  color: #FF4500;
 }
 
 a:hover {
-  color: #5DADE2;
+  color: #EE82EE;
   text-decoration: none;
 }
 
 a {
-  color: #7FB3D5;
+  color: #DA70D6;
 }
 
 body {
   margin: 1.5rem;
-  background-color: #34495E;
+  background-color: #FFF8DC;
   border-radius: 10px;
-  border: 1px solid #4A6F8A;
+  border: 1px solid #FFA07A;
   padding: 1rem;
   width: 50%;
   margin-left: auto;

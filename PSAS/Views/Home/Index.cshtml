@@ -4,7 +4,23 @@
 
 @using PSAS.Models;
 
-<h1>Welcome to Pierre's Bad Bakery: Sweets Division!</h1>
+<h1>Welcome to Type Deux, par Pierre</h1>
+
+<h2>Here are all the Treats</h2>
+<ul>
+@foreach (Treat treat in Model["treats"])
+    {
+      <li>@Html.ActionLink(@treat.Name, "Details", "Treats", new { id = @treat.TreatId})</li>
+    }
+</ul>
+@* NEED TO PASS IN FLAVORS, THEN ALSO CHANGE THESE TWO LISTS TO NON CLICKABLE
+<h2>Here are all the Flavors</h2>
+<ul>
+@foreach (Flavor flavor in Model["flavors"])
+    {
+      <li>@Html.ActionLink(@flavor.Name, "Details", "Flavors", new { id = @flavor.FlavorId})</li>
+    }
+</ul> *@
 
 <hr>
 @if (User.Identity.IsAuthenticated)
