@@ -6,7 +6,7 @@
 
 <h1>Welcome to Type Deux, par Pierre</h1>
 
-<h2>Here are all the Treats</h2>
+<h2>Full menu of Treats and Flavors</h2>
 <ul>
 @foreach (Treat treat in Model["treats"])
     {
@@ -22,7 +22,6 @@
     }
 </ul> *@
 
-<hr>
 @if (User.Identity.IsAuthenticated)
 
 {
