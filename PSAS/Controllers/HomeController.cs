@@ -3,8 +3,8 @@ using PSAS.Models;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Identity;
-using System.Threading.Tasks;
-using System.Security.Claims;
+using PSAS.ViewModels;
+
 
 namespace PSAS.Controllers
 {
@@ -20,19 +20,17 @@ namespace PSAS.Controllers
     }
 
     [HttpGet("/")]
-    public async Task<ActionResult> Index()
+    public ActionResult Index()
     {
-      Dictionary<string, object[]> model = new Dictionary<string, object[]>();
-      string userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-      ApplicationUser currentUser = await _userManager.FindByIdAsync(userId);
-      if (currentUser != null)
+      List<Flavor> allFlavors = _db.Flavors.ToList();
+      List<Treat> allTreats = _db.Treats.ToList();
+      MenuViewModel viewModel = new MenuViewModel
       {
-        Treat[] treats = _db.Treats
-                    .Where(entry => entry.User.Id == currentUser.Id)
-                    .ToArray();
-        model.Add("treats", treats);
-      }
-      return View(model);
+        AllFlavors = allFlavors,
+        AllTreats = allTreats
+      };
+      return View(viewModel);
     }
+
   }
 }
