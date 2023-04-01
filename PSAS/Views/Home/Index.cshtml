@@ -2,49 +2,22 @@
   Layout = "_Layout";
 }
 
-@using PSAS.Models;
-
 <h1>Welcome to Type Deux, par Pierre</h1>
 
-<h2>Full menu of Treats and Flavors</h2>
-<ul>
-@foreach (Treat treat in Model["treats"])
-    {
-      <li>@Html.ActionLink(@treat.Name, "Details", "Treats", new { id = @treat.TreatId})</li>
-    }
-</ul>
-@* NEED TO PASS IN FLAVORS, THEN ALSO CHANGE THESE TWO LISTS TO NON CLICKABLE
-<h2>Here are all the Flavors</h2>
-<ul>
-@foreach (Flavor flavor in Model["flavors"])
-    {
-      <li>@Html.ActionLink(@flavor.Name, "Details", "Flavors", new { id = @flavor.FlavorId})</li>
-    }
-</ul> *@
+<h2>Full menu of Possibilites!</h2>
 
-@if (User.Identity.IsAuthenticated)
-
-{
-  <h4>Treats for @User.Identity.Name</h4>
-  @if (Model["treats"].Length == 0)
+<h3>Treats</h3>
+<ul>
+  @foreach (var treat in Model.AllTreats)
   {
-    <p>No treats have been added yet!</p>
+    <li>@treat.Name</li>
   }
-  <ul>
-  @foreach (Treat treat in Model["treats"])
-    {
-      <li>@Html.ActionLink(@treat.Name, "Details", "Treats", new { id = @treat.TreatId})</li>
-    }
-  </ul>
-}
-else
-{
-<h4>Treats</h4>
-<p>Please @Html.ActionLink("log in", "Login", "Account") to create some sweet sugar magic.</p>
-}
+</ul>
 
-<hr>
-
-<p>@Html.ActionLink("Manage treats", "Index", "Treats")</p>
-<p>@Html.ActionLink("Manage flavors", "Index", "Flavors")</p>
-<p>@Html.ActionLink("Create or manage an account", "Index", "Account")</p>
+<h3>Flavors</h3>
+<ul>
+  @foreach (var flavor in Model.AllFlavors)
+  {
+    <li>@flavor.Name</li>
+  }
+</ul>

@@ -297,7 +297,7 @@ namespace Treats.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "58d75be2-682b-44b5-8d68-276da84bfee9", 0, "", "exampleuser@example.com", true, false, null, "EXAMPLEUSER@EXAMPLE.COM", "ADMIN", "AQAAAAIAAYagAAAAEI/N5fnFbEQQC5qOxlAtrrgmQiVSGhW1GH1lsZ7pBMk9o4cIApJqmpBsOKHQg2Ijww==", "555-555-5555", false, "", false, "admin" });
+                values: new object[] { "1", 0, "", "exampleuser@example.com", true, false, null, "EXAMPLEUSER@EXAMPLE.COM", "ADMIN", "AQAAAAIAAYagAAAAEM2xqlQPvHQWUZP81yUmluY7kG6lh7BR3QWw2ulGHXe4z3r03uK9GsHMdYqqi8Vbfw==", "555-555-5555", false, "", false, "admin" });
 
             migrationBuilder.InsertData(
                 table: "Flavors",

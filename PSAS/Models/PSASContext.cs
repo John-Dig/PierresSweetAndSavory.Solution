@@ -32,7 +32,7 @@ namespace PSAS.Models
       // Add the user to the Users DbSet and set their password hash
       builder.Entity<ApplicationUser>().HasData(new
       {
-        Id = "58d75be2-682b-44b5-8d68-276da84bfee9",
+        Id = "1",
         UserName = user.UserName,
         NormalizedUserName = user.UserName.ToUpper(),
         Email = user.Email,

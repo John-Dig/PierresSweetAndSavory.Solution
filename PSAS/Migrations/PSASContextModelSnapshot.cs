@@ -229,7 +229,7 @@ namespace Treats.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "58d75be2-682b-44b5-8d68-276da84bfee9",
+                            Id = "1",
                             AccessFailedCount = 0,
                             ConcurrencyStamp = "",
                             Email = "exampleuser@example.com",
@@ -237,7 +237,7 @@ namespace Treats.Migrations
                             LockoutEnabled = false,
                             NormalizedEmail = "EXAMPLEUSER@EXAMPLE.COM",
                             NormalizedUserName = "ADMIN",
-                            PasswordHash = "AQAAAAIAAYagAAAAEI/N5fnFbEQQC5qOxlAtrrgmQiVSGhW1GH1lsZ7pBMk9o4cIApJqmpBsOKHQg2Ijww==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEM2xqlQPvHQWUZP81yUmluY7kG6lh7BR3QWw2ulGHXe4z3r03uK9GsHMdYqqi8Vbfw==",
                             PhoneNumber = "555-555-5555",
                             PhoneNumberConfirmed = false,
                             SecurityStamp = "",
