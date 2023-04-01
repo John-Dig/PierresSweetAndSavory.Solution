@@ -165,6 +165,7 @@ namespace Treats.Migrations
             modelBuilder.Entity("PSAS.Models.ApplicationUser", b =>
                 {
                     b.Property<string>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("varchar(255)");
 
                     b.Property<int>("AccessFailedCount")
@@ -224,6 +225,25 @@ namespace Treats.Migrations
                         .HasDatabaseName("UserNameIndex");
 
                     b.ToTable("AspNetUsers", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "58d75be2-682b-44b5-8d68-276da84bfee9",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "",
+                            Email = "exampleuser@example.com",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "EXAMPLEUSER@EXAMPLE.COM",
+                            NormalizedUserName = "ADMIN",
+                            PasswordHash = "AQAAAAIAAYagAAAAEI/N5fnFbEQQC5qOxlAtrrgmQiVSGhW1GH1lsZ7pBMk9o4cIApJqmpBsOKHQg2Ijww==",
+                            PhoneNumber = "555-555-5555",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "",
+                            TwoFactorEnabled = false,
+                            UserName = "admin"
+                        });
                 });
 
             modelBuilder.Entity("PSAS.Models.Flavor", b =>
@@ -243,6 +263,58 @@ namespace Treats.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Flavors");
+
+                    b.HasData(
+                        new
+                        {
+                            FlavorId = 1,
+                            Name = "Vanilla"
+                        },
+                        new
+                        {
+                            FlavorId = 2,
+                            Name = "Chocolate"
+                        },
+                        new
+                        {
+                            FlavorId = 3,
+                            Name = "Caramel"
+                        },
+                        new
+                        {
+                            FlavorId = 4,
+                            Name = "Lemon"
+                        },
+                        new
+                        {
+                            FlavorId = 5,
+                            Name = "Raspberry"
+                        },
+                        new
+                        {
+                            FlavorId = 6,
+                            Name = "Almond"
+                        },
+                        new
+                        {
+                            FlavorId = 7,
+                            Name = "Pistachio"
+                        },
+                        new
+                        {
+                            FlavorId = 8,
+                            Name = "Coffee"
+                        },
+                        new
+                        {
+                            FlavorId = 9,
+                            Name = "Hazelnut"
+                        },
+                        new
+                        {
+                            FlavorId = 10,
+                            Name = "Orange"
+                        });
                 });
 
             modelBuilder.Entity("PSAS.Models.FlavorTreat", b =>
@@ -283,6 +355,33 @@ namespace Treats.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Treats");
+
+                    b.HasData(
+                        new
+                        {
+                            TreatId = 1,
+                            Name = "Macarons"
+                        },
+                        new
+                        {
+                            TreatId = 2,
+                            Name = "Croissants"
+                        },
+                        new
+                        {
+                            TreatId = 3,
+                            Name = "Creme Brulee"
+                        },
+                        new
+                        {
+                            TreatId = 4,
+                            Name = "Eclairs"
+                        },
+                        new
+                        {
+                            TreatId = 5,
+                            Name = "Madeleines"
+                        });
                 });
 
             modelBuilder.Entity("FlavorTreat", b =>

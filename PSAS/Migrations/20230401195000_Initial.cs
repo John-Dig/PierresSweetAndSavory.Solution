@@ -4,6 +4,8 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace Treats.Migrations
 {
     /// <inheritdoc />
@@ -291,6 +293,40 @@ namespace Treats.Migrations
                         onDelete: ReferentialAction.Cascade);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.InsertData(
+                table: "AspNetUsers",
+                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
+                values: new object[] { "58d75be2-682b-44b5-8d68-276da84bfee9", 0, "", "exampleuser@example.com", true, false, null, "EXAMPLEUSER@EXAMPLE.COM", "ADMIN", "AQAAAAIAAYagAAAAEI/N5fnFbEQQC5qOxlAtrrgmQiVSGhW1GH1lsZ7pBMk9o4cIApJqmpBsOKHQg2Ijww==", "555-555-5555", false, "", false, "admin" });
+
+            migrationBuilder.InsertData(
+                table: "Flavors",
+                columns: new[] { "FlavorId", "Name", "UserId" },
+                values: new object[,]
+                {
+                    { 1, "Vanilla", null },
+                    { 2, "Chocolate", null },
+                    { 3, "Caramel", null },
+                    { 4, "Lemon", null },
+                    { 5, "Raspberry", null },
+                    { 6, "Almond", null },
+                    { 7, "Pistachio", null },
+                    { 8, "Coffee", null },
+                    { 9, "Hazelnut", null },
+                    { 10, "Orange", null }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Treats",
+                columns: new[] { "TreatId", "Name", "UserId" },
+                values: new object[,]
+                {
+                    { 1, "Macarons", null },
+                    { 2, "Croissants", null },
+                    { 3, "Creme Brulee", null },
+                    { 4, "Eclairs", null },
+                    { 5, "Madeleines", null }
+                });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
