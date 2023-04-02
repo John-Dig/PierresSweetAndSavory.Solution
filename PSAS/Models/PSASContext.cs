@@ -44,7 +44,7 @@ namespace PSAS.Models
         PhoneNumber = "555-555-5555",
         PhoneNumberConfirmed = false,
         TwoFactorEnabled = false,
-        LockoutEmd = "2020-01-01 00:00:00",
+        LockoutEmd = "2020-01-01 00:00:00", //typo? Emd?
         LockoutEnabled = false,
         AccessFailedCount = 0,
       });

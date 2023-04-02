@@ -1,0 +1,34 @@
+@{
+  Layout = "_Layout";
+}
+
+<h1>View everyone's creations</h1>
+
+
+<h2>Treats and the flavors the treat has</h2>
+
+@foreach (var treat in Model)
+{
+  <h3>@treat.TreatName</h3>
+  <ul>
+    @foreach (var flavor in treat.Flavors)
+    {
+      <li>@flavor.FlavorName</li>
+    }
+  </ul>
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<hr>

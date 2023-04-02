@@ -6,7 +6,6 @@
 
 <h2>Add a treat</h2>
 
-{
   <h4>Add a treat to this flavor: @Html.DisplayFor(model => model.Name)</h4>
 
   @using (Html.BeginForm())
@@ -18,5 +17,4 @@
 
     <input type="submit" value="Save" />
   }
-}
 <p>@Html.ActionLink("Back to flavors list", "Index")</p>
