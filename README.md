@@ -37,7 +37,8 @@ This is a website where a sweets shop has a menu of treats and flavors.  You can
 
 
 ## Known Bugs
-There is some extra code for future expandability.  I wanted to have an extra page that displayed all of the creations of your logged in user.  There also could be better security and the authorization could be better. I spent some time exploring extra features like seeding data and seeding an admin.
+There is some extra code for future expandability.  I wanted to have an extra page that displayed all of the creations of your logged in user.  There also could be better security and the authorization could be better.  The formatting isn't perfect, a few spaces here and there that don't need to be. 
+
 
 #### License
 ##### [MIT](https://github.com/git/git-scm.com/blob/main/MIT-LICENSE.txt)
